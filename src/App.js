@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
-import placeholderImg from './placeholder.png'
 import { ReactComponent as ChevronLeft } from './chevron-left.svg'
 import { ReactComponent as ChevronRight } from './chevron-right.svg'
 import MovieCard from './components/MovieCard'
