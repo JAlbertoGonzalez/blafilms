@@ -1,8 +1,4 @@
-export default function SearchBar({
-    onChange,
-    onSubmit,
-    loading = false
-}) {
+export default function SearchBar({ onChange, onSubmit, loading = false }) {
   return (
     <div className="search">
       <input

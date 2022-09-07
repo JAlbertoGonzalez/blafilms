@@ -85,7 +85,8 @@ button {
   text-align: left;
 }
 
-.search-item .search-item-data .title,.search-item .search-item-data .title a {
+.search-item .search-item-data .title,
+.search-item .search-item-data .title a {
   color: #457b9d;
   font-weight: bold;
   font-size: 20px;
@@ -106,7 +107,7 @@ button {
   width: 36px;
   height: 36px;
   margin: 10px auto;
-  
+
   animation: spin 1s linear infinite;
 }
 
