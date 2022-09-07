@@ -81,13 +81,14 @@ button {
   text-align: left;
 }
 
-.search-item .search-item-data .title {
+.search-item .search-item-data .title,.search-item .search-item-data .title a {
   color: #457b9d;
   font-weight: bold;
   font-size: 20px;
   height: 80px;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-decoration: none;
 }
 
 .search-item .search-item-data .meta {
