@@ -4,6 +4,7 @@ import placeholderImg from './placeholder.png'
 import { ReactComponent as ChevronLeft } from './chevron-left.svg'
 import { ReactComponent as ChevronRight } from './chevron-right.svg'
 import MovieCard from './components/MovieCard'
+import SearchBar from './components/SearchBar'
 
 function App() {
   const [searchInput, setSearchInput] = useState('')
@@ -50,16 +51,11 @@ function App() {
 
   return (
     <div className="App">
-      <div className="search">
-        <input
-          type="text"
-          placeholder="Search..."
-          onChange={x => setSearchInput(x.target.value)}
-        />
-        <button onClick={handleNewSearch}>
-          {loading ? <div className="spinner"></div> : 'Search'}
-        </button>
-      </div>
+      <SearchBar
+        onChange={e => setSearchInput(e.target.value)}
+        onSubmit={handleNewSearch}
+      />
+
       {!searchResult || loading ? (
         <p className="no-results">{loading ? 'Loading' : 'No results'}</p>
       ) : (
