@@ -65,27 +65,29 @@ button {
   color: #e63946;
   margin: 20px;
   padding: 10px;
-  display: grid;
-  grid-template-columns: 25% 75%;
+  display: flex;
+  overflow: hidden;
 }
 
 .search-item img {
   width: 75px;
   height: 111px;
   border-radius: 2px;
+  margin-right: 10px;
 }
 
 .search-item .search-item-data {
   padding-top: 10px;
   text-align: left;
-  display: grid;
-  grid-template-rows: 75% 25%;
 }
 
 .search-item .search-item-data .title {
   color: #457b9d;
   font-weight: bold;
   font-size: 20px;
+  height: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .search-item .search-item-data .meta {
@@ -111,4 +113,10 @@ button {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.no-results {
+  display: flex;
+  justify-content: center;
+  margin: 15px;
 }

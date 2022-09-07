@@ -53,7 +53,7 @@ function App() {
         </button>
       </div>
       {!searchResult || loading ? (
-        <p>No results yet</p>
+        <p className='no-results'>{loading ? 'Loading' : 'No results'}</p>
       ) : (
         <div className="search-results">
           <div
