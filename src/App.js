@@ -8,9 +8,16 @@ function App() {
   const [searchInput, setSearchInput] = useState('')
   const [searchPage, setSearchPage] = useState(1)
   const [searchResult, setSearchResult] = useState()
+  const [loading, setLoading] = useState(false)
+
+  const wait = () => new Promise(r => setTimeout(r, 750))
 
   const search = async (input = searchInput, page = 1) => {
-    if (!input) return null
+    if (!input) return setSearchResult(null)
+
+    setLoading(true)
+
+    await wait()
 
     const response = await fetch(
       'http://www.omdbapi.com/?apikey=a461e386&s=' + input + '&page=' + page,
@@ -19,6 +26,8 @@ function App() {
     const data = await response.json()
 
     setSearchResult(data.Search ? data : null)
+
+    setLoading(false)
   }
 
   const handleNewSearch = () => {
@@ -39,13 +48,18 @@ function App() {
           placeholder="Search..."
           onChange={x => setSearchInput(x.target.value)}
         />
-        <button onClick={handleNewSearch}>Search</button>
+        <button onClick={handleNewSearch}>
+          {loading ? <div className="spinner"></div> : 'Search'}
+        </button>
       </div>
-      {!searchResult ? (
+      {!searchResult || loading ? (
         <p>No results yet</p>
       ) : (
         <div className="search-results">
-          <div className="chevron" onClick={() => setSearchPage(Math.max(searchPage - 1, 0))}>
+          <div
+            className="chevron"
+            onClick={() => setSearchPage(Math.max(searchPage - 1, 0))}
+          >
             <ChevronLeft />
           </div>
           <div className="search-results-list">
@@ -62,7 +76,10 @@ function App() {
               </div>
             ))}
           </div>
-          <div className="chevron" onClick={() => setSearchPage(searchPage + 1)}>
+          <div
+            className="chevron"
+            onClick={() => setSearchPage(searchPage + 1)}
+          >
             <ChevronRight />
           </div>
         </div>
