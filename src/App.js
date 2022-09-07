@@ -3,6 +3,7 @@ import './App.css'
 import placeholderImg from './placeholder.png'
 import { ReactComponent as ChevronLeft } from './chevron-left.svg'
 import { ReactComponent as ChevronRight } from './chevron-right.svg'
+import MovieCard from './components/MovieCard'
 
 function App() {
   const [searchInput, setSearchInput] = useState('')
@@ -53,7 +54,7 @@ function App() {
         </button>
       </div>
       {!searchResult || loading ? (
-        <p className='no-results'>{loading ? 'Loading' : 'No results'}</p>
+        <p className="no-results">{loading ? 'Loading' : 'No results'}</p>
       ) : (
         <div className="search-results">
           <div
@@ -64,16 +65,7 @@ function App() {
           </div>
           <div className="search-results-list">
             {searchResult.Search.map(result => (
-              <div key={result.imdbID} className="search-item">
-                <img
-                  src={result.Poster === 'N/A' ? placeholderImg : result.Poster}
-                  alt="poster"
-                />
-                <div className="search-item-data">
-                  <div className="title">{result.Title}</div>
-                  <div className="meta">{`${result.Type} | ${result.Year}`}</div>
-                </div>
-              </div>
+              <MovieCard {...result} />
             ))}
           </div>
           <div
