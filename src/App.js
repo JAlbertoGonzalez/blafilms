@@ -4,6 +4,7 @@ import { ReactComponent as ChevronLeft } from './images/chevron-left.svg'
 import { ReactComponent as ChevronRight } from './images/chevron-right.svg'
 import MovieCard from './components/MovieCard'
 import SearchBar from './components/SearchBar'
+import { omdbSearch } from './lib/omdbapi'
 
 function App() {
   const [searchInput, setSearchInput] = useState('')
@@ -11,30 +12,17 @@ function App() {
   const [searchResult, setSearchResult] = useState()
   const [loading, setLoading] = useState(false)
 
-  const wait = () => new Promise(r => setTimeout(r, 750))
-
-  const search = async (input = searchInput, page = 1) => {
-    if (!input) return setSearchResult(null)
-
+  const handleSearch = () => {
+    // Reset to first page
     setLoading(true)
-
-    await wait()
-
-    const response = await fetch(
-      'http://www.omdbapi.com/?apikey=a461e386&s=' + input + '&page=' + page,
-    ).catch(() => null)
-
-    const data = await response.json()
-
-    setSearchResult(data.Search ? data : null)
-
-    setLoading(false)
+    omdbSearch(searchInput, searchPage)
+      .then(setSearchResult)
+      .finally(() => setLoading(false))
   }
 
   const handleNewSearch = () => {
-    // Reset to first page
     setSearchPage(1)
-    search()
+    handleSearch()
   }
 
   const nextPageExists = () => {
@@ -45,7 +33,7 @@ function App() {
   }
 
   useEffect(() => {
-    search(searchInput, searchPage)
+    handleSearch()
   }, [searchPage])
 
   return (
