@@ -1,4 +1,4 @@
-import placeholderImg from '../placeholder.png'
+import placeholderImg from '../images/placeholder.png'
 
 export default function MovieCard({ imdbID, Poster, Title, Type, Year }) {
   return (

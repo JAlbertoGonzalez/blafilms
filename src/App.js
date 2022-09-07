@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
-import { ReactComponent as ChevronLeft } from './chevron-left.svg'
-import { ReactComponent as ChevronRight } from './chevron-right.svg'
+import { ReactComponent as ChevronLeft } from './images/chevron-left.svg'
+import { ReactComponent as ChevronRight } from './images/chevron-right.svg'
 import MovieCard from './components/MovieCard'
 import SearchBar from './components/SearchBar'
 
