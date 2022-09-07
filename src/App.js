@@ -41,6 +41,7 @@ function App() {
       <SearchBar
         onChange={e => setSearchInput(e.target.value)}
         onSubmit={handleNewSearch}
+        loading={loading}
       />
 
       {!searchResult || loading ? (
@@ -50,7 +51,7 @@ function App() {
           <div className="chevron">
             {searchPage > 1 && (
               <button
-                onClick={() => setSearchPage(Math.max(searchPage - 1, 0))}
+                onClick={() => setSearchPage(Math.max(searchPage - 1, 1))}
               >
                 {' '}
                 <ChevronLeft />
