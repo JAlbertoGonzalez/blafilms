@@ -37,6 +37,13 @@ function App() {
     search()
   }
 
+  const nextPageExists = () => {
+    return (
+      10 * (searchPage - 1) + searchResult.Search.length <
+      searchResult.totalResults
+    )
+  }
+
   useEffect(() => {
     search(searchInput, searchPage)
   }, [searchPage])
@@ -57,22 +64,28 @@ function App() {
         <p className="no-results">{loading ? 'Loading' : 'No results'}</p>
       ) : (
         <div className="search-results">
-          <div
-            className="chevron"
-            onClick={() => setSearchPage(Math.max(searchPage - 1, 0))}
-          >
-            <ChevronLeft />
+          <div className="chevron">
+            {searchPage > 1 && (
+              <button
+                onClick={() => setSearchPage(Math.max(searchPage - 1, 0))}
+              >
+                {' '}
+                <ChevronLeft />
+              </button>
+            )}
           </div>
+
           <div className="search-results-list">
             {searchResult.Search.map(result => (
               <MovieCard {...result} />
             ))}
           </div>
-          <div
-            className="chevron"
-            onClick={() => setSearchPage(searchPage + 1)}
-          >
-            <ChevronRight />
+          <div className="chevron">
+            {nextPageExists() && (
+              <button onClick={() => setSearchPage(searchPage + 1)}>
+                <ChevronRight />
+              </button>
+            )}
           </div>
         </div>
       )}
