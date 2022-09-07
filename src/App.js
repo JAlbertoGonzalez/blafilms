@@ -73,7 +73,7 @@ function App() {
 
           <div className="search-results-list">
             {searchResult.Search.map(result => (
-              <MovieCard {...result} />
+              <MovieCard key={result.imdbID} {...result} />
             ))}
           </div>
           <div className="chevron">
