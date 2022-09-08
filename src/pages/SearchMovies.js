@@ -20,7 +20,7 @@ export default function SearchMovies() {
   }
 
   const handleNewSearch = () => {
-    // Reset to first page
+    // Reset to first page before search
     setSearchPage(1)
     handleSearch()
   }
@@ -33,6 +33,7 @@ export default function SearchMovies() {
   }
 
   useEffect(() => {
+    // On page change, update results
     handleSearch()
   }, [searchPage])
 
