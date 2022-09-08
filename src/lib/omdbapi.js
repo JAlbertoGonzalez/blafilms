@@ -5,6 +5,7 @@ export const wait = (t = 750) => new Promise(r => setTimeout(r, t))
 export const omdbSearch = async (input = '', page = 1) => {
   if (!input) return null
 
+  // For debug purposes, gives to user loading perception
   await wait()
 
   const queryURI = encodeURI(input)

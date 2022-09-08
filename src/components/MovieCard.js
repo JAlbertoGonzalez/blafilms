@@ -7,7 +7,7 @@ export default function MovieCard({ imdbID, Poster, Title, Type, Year }) {
       <div className="search-item-data">
         <div className="title">
           <a
-            href={'https://www.imdb.com/title/' + imdbID}
+            href={`https://www.imdb.com/title/${imdbID}`}
             target="_blank"
             rel="noreferrer"
           >
