@@ -4,6 +4,7 @@ import { ReactComponent as ChevronLeft } from '../images/chevron-left.svg'
 import { ReactComponent as ChevronRight } from '../images/chevron-right.svg'
 import MovieCard from '../components/MovieCard'
 import SearchBar from '../components/SearchBar'
+import './SearchMovies.css'
 
 export default function SearchMovies() {
   const [searchInput, setSearchInput] = useState('')

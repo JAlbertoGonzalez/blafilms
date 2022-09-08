@@ -1,4 +1,4 @@
-export const wait = () => new Promise(r => setTimeout(r, 750))
+export const wait = (t = 750) => new Promise(r => setTimeout(r, t))
 
 export const omdbSearch = async (input = '', page = 1) => {
   if (!input) return null
