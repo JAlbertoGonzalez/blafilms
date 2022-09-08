@@ -7,9 +7,10 @@ export const omdbSearch = async (input = '', page = 1) => {
 
   await wait()
 
-  const response = await fetch(
-    `http://www.omdbapi.com/?apikey=${API_KEY}&s=${input}&page=${page}`,
-  ).catch(() => null)
+  const queryURI = encodeURI(input)
+  const ENDPOINT = `http://www.omdbapi.com/?apikey=${API_KEY}&s=${queryURI}&page=${page}`
+
+  const response = await fetch(ENDPOINT)
 
   const data = await response.json()
 

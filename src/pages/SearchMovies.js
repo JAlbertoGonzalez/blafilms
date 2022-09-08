@@ -16,6 +16,9 @@ export default function SearchMovies() {
     setLoading(true)
     omdbSearch(searchInput, searchPage)
       .then(setSearchResult)
+      // Can be improved handling errors:
+      // response codes / code exceptions / empty results
+      .catch(() => setSearchInput(null))
       .finally(() => setLoading(false))
   }
 
